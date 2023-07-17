@@ -8,7 +8,7 @@ global:
 
   datacenter:
     cloudProvider: PROVIDE_CLOUDPROVIDER
-    storageClassName: ocs-storagecluster-ceph-rgw
+    storageClassName: gp2
     region: PROVIDE_REGION
     clustername: PROVIDE_CLUSTERNAME
     domain: PROVIDE_DOMAIN
