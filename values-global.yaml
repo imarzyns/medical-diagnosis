@@ -8,7 +8,7 @@ global:
 
   datacenter:
     cloudProvider: PROVIDE_CLOUDPROVIDER
-    storageClassName: gp2
+    storageClassName: thin-csi
     region: PROVIDE_REGION
     clustername: PROVIDE_CLUSTERNAME
     domain: PROVIDE_DOMAIN
