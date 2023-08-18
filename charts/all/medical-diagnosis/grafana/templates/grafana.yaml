@@ -8,6 +8,13 @@ metadata:
 spec:
   deployment:
     skipCreateAdminAccount: true
+    {{- if $.Values.global.httpsProxy.enabled }}
+    httpProxy:
+      enabled: {{ .Values.global.httpsProxy.enabled }}
+      noProxy: {{ .Values.global.httpsProxy.noProxy }}
+      secureUrl: {{ .Values.global.httpsProxy.secureUrl }}
+      url: {{ .Values.global.httpsProxy.url }}
+    {{- end }}
     envFrom:
       - secretRef:
           name: grafana-creds

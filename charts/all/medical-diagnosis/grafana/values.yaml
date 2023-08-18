@@ -5,6 +5,11 @@ global:
       bucketBaseName: xray-source
   datacenter:
     clustername: gitops
+  httpProxy:
+    enabled: ""
+    noProxy: ""
+    secureUrl: ""
+    url: ""
 
 secretStore:
   name: vault-backend

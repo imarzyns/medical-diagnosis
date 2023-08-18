@@ -15,4 +15,4 @@ xraylabsecret:
 database:
   name: xraylabdb
   image: registry.redhat.io/rhel8/mariadb-103:latest
-  storageClassName: gp2
+  storageClassName: ocs-storagecluster-cephfs
