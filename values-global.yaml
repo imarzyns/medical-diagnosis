@@ -14,7 +14,7 @@ global:
 
   datacenter:
     cloudProvider: PROVIDE_CLOUDPROVIDER # Not required for on-prem
-    storageClassName: "" 
+    storageClassName: "thin-csi" 
     region: PROVIDE_REGION # Not required for on-prem
     clustername: ""
     domain: ""
@@ -25,7 +25,7 @@ global:
     s3:
       # Values for S3 bucket access
       # bucketSource: "provide s3 bucket name where images are stored"
-      bucketSource: ""
+      bucketSource: "test-bucket-imarzyns"
       # Bucket base name used for image-generator and image-server applications.
       bucketBaseName: "xray-source"
 
