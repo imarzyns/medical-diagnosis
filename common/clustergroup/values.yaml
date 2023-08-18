@@ -6,6 +6,11 @@ global:
     syncPolicy: Automatic
     installPlanApproval: Automatic
     applicationRetryLimit: 20
+  httpProxy:
+    enabled: ""
+    noProxy: ""
+    secureUrl: ""
+    url: ""
 
 enabled: "all"
 
