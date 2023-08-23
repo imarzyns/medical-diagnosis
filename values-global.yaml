@@ -14,7 +14,7 @@ global:
 
   datacenter:
     cloudProvider: PROVIDE_CLOUDPROVIDER # Not required for on-prem
-    storageClassName: "thin-csi" 
+    storageClassName: "ocs-storagecluster-cephfs" 
     region: PROVIDE_REGION # Not required for on-prem
     clustername: ""
     domain: ""
