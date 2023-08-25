@@ -15,17 +15,19 @@ Create initial object bucket to store xray images and copy images from 'base_ima
 export AWS_ACCESS_KEY_ID=xxxx
 export AWS_SECRET_ACCESS_KEY=xxx
 
-aws --endpoint CEPH_RGW_ENDPOINT --no-verify-ssl s3api create-bucket --bucket CEPH_BUCKET_NAME
-aws --endpoint CEPH_RGW_ENDPOINT --no-verify-ssl s3 cp base_images/ s3://CEPH_BUCKET_NAME/ --recursive
-aws --endpoint CEPH_RGW_ENDPOINT --no-verify-ssl s3api put-bucket-policy --bucket CEPH_BUCKET_NAME --policy file://PATH_TO_BUCKET_POLICY/bucket-policy.json
+aws --endpoint https://CEPH_RGW_ENDPOINT --no-verify-ssl s3api create-bucket --bucket CEPH_BUCKET_NAME
+aws --endpoint https://CEPH_RGW_ENDPOINT --no-verify-ssl s3 cp base_images/ s3://CEPH_BUCKET_NAME/ --recursive
+aws --endpoint https://CEPH_RGW_ENDPOINT --no-verify-ssl s3api put-bucket-policy --bucket CEPH_BUCKET_NAME --policy file://PATH_TO_BUCKET_POLICY/bucket-policy.json
 ```
 
 User can get CEPH_RGW_ENDPOINT by executing command:
+
 ```
-oc -n openshift-storage get route ocs-storagecluster-cephobjectstore -ojson | jq '.spec.host'
+oc -n openshift-storage get route ocs-storagecluster-cephobjectstore -ojsonpath='{.spec.host}'
 ```
 
 Ceph rgw bucket needs specific bucket policy to be applied 'bucket-policy.json':
+
 ```
 {
 "Statement": [
@@ -41,9 +43,22 @@ Ceph rgw bucket needs specific bucket policy to be applied 'bucket-policy.json':
 ```
 
 Base images can be found on original repo: https://github.com/red-hat-data-services/jumpstart-library/tree/main/demo1-xray-pipeline/base_elements/containers/image-init/base_images
-AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY can be found in OCS Secret: 'rook-ceph-object-user-ocs-storagecluster-cephobjectstore-xraylab-1' in 'openshift-storage' namespace.
+AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY can be found by performing following commands:
+
+```
+oc -n xraylab-1 get secret s3-secret-bck -ojsonpath='{.data.AWS_ACCESS_KEY_ID}' | base64 -d
+oc -n xraylab-1 get secret s3-secret-bck -ojsonpath='{.data.AWS_SECRET_ACCESS_KEY}' | base64 -d
+```
 
 Required fields to fill are in 'values-global.yaml' set as blank fields: "".
+
+If Validated pattern is installed using operator from OperatorHub user must type in secrets (from _values-secret.yaml_) into vault manually. Root token to vault can be found here:
+
+```
+oc -n imperative get secrets vaultkeys -ojsonpath='{.data.vault_data_json}' | base64 -d
+```
+
+To make secrets populate into vault automatically, please install validated pattern using `make` command.
 
 
 ### Cluster HW requirements
