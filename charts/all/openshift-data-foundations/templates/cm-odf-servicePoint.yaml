@@ -7,4 +7,4 @@ metadata:
     argocd.argoproj.io/sync-wave: "-4"
 data:
   url: "{{ .Values.odf.serviceUrl }}"
-  url-external: "{{ .Values.odf.externalUrl }}.apps.{{ .Values.global.clusterName }}.{{ .Values.global.clusterDomain }}"
+  url-external: "{{ .Values.odf.externalUrl }}.apps.{{ .Values.global.clusterDomain }}"
