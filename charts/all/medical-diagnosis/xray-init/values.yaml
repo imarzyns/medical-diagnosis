@@ -33,6 +33,9 @@ imageStreamUpdated:
   from:
     name: "xraylab-risk-assessment:tf2.13"
 
+buildConfig:
+  name: risk-assessment-bc
+
 rbac:
   roles:
     - name: view-odf-storageclusters

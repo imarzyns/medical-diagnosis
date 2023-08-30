@@ -1,7 +1,7 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: risk-assessment-bc
+  name: {{ .Values.buildConfig.name }}
   namespace: {{ .Values.global.xraylab.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: "1"
