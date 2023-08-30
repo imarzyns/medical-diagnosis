@@ -7,12 +7,7 @@ global:
   clusterName: gitops
   datacenter:
     clustername: gitops
-  httpProxy:
-    enabled: ""
-    noProxy: ""
-    secureUrl: ""
-    url: ""
-
+    
 secretStore:
   name: vault-backend
   kind: ClusterSecretStore
