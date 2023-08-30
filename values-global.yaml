@@ -1,12 +1,6 @@
 global:
   pattern: xray
 
-  httpProxy:
-    enabled: true
-    noProxy: ""
-    secureUrl: ""
-    url: ""
-
   options:
     useCSV: False
     syncPolicy: Automatic
@@ -14,10 +8,10 @@ global:
 
   datacenter:
     cloudProvider: PROVIDE_CLOUDPROVIDER # Not required for on-prem
-    storageClassName: "ocs-storagecluster-cephfs" 
+    storageClassName: "ocs-storagecluster-cephfs" # Default filesystem storage used on on-prem cluster, can be changed by user
     region: PROVIDE_REGION # Not required for on-prem
-    clustername: ""
-    domain: ""
+    clustername: "" # Not required for on-prem, pattern uses on-prem cluster value instead
+    domain: "" # Not required for on-prem, pattern uses on-prem cluster value instead
 
   xraylab:
     namespace: "xraylab-1"
@@ -25,7 +19,7 @@ global:
     s3:
       # Values for S3 bucket access
       # bucketSource: "provide s3 bucket name where images are stored"
-      bucketSource: "test-bucket-imarzyns"
+      bucketSource: "PROVIDE_BUCKET_SOURCE"
       # Bucket base name used for image-generator and image-server applications.
       bucketBaseName: "xray-source"
 
