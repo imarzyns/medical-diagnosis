@@ -14,7 +14,7 @@ spec:
           revisionTimestamp: ''
     spec:
       containers:
-      - image: quay.io/rh-data-services/xraylab-risk-assessment:latest
+      - image: "{{ .Values.imageStreamUpdated.registry }}/{{ .Values.global.xraylab.namespace }}/{{ .Values.imageStreamUpdated.from.name }}"
         ports:
         - containerPort: 5000
         env:

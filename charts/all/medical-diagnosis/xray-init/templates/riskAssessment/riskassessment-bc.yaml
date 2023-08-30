@@ -1,0 +1,34 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: risk-assessment-bc
+  namespace: {{ .Values.global.xraylab.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  runPolicy: Serial
+  source:
+    dockerfile: |
+      FROM {{ .Values.imageStream.from.name }}
+
+      USER root
+      WORKDIR /usr/src/app
+
+      RUN pip3 install --upgrade tensorflow==2.13 && \
+          sed -i "/from keras_preprocessing.image import load_img/d" risk-assessment.py && \
+          sed -i "s/from tensorflow.keras.preprocessing.image import img_to_array/from tensorflow.keras.preprocessing.image import img_to_array, load_img/g" risk-assessment.py
+
+      USER default
+      CMD ["python", "-u", "risk-assessment.py"]
+
+  strategy:
+    type: Docker
+    dockerStrategy:
+      noCache: false
+  triggers:
+    - type: "ConfigChange"
+  output:
+    to:
+      kind: ImageStreamTag
+      name: "{{ .Values.imageStreamUpdated.from.name }}"
+
