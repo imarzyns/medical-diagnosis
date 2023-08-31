@@ -29,7 +29,7 @@ imageStream:
     name: "quay.io/rh-data-services/xraylab-risk-assessment:latest"
 
 imageStreamUpdated:
-  registry: image-registry.openshift-image-registry.svc:5000/xraylab-1/risk-assessment:tf2.13
+  registry: image-registry.openshift-image-registry.svc:5000
   from:
     name: "risk-assessment:tf2.13"
 
