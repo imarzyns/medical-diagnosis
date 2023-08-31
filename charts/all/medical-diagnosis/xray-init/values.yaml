@@ -29,9 +29,9 @@ imageStream:
     name: "quay.io/rh-data-services/xraylab-risk-assessment:latest"
 
 imageStreamUpdated:
-  registry: image-registry.openshift-image-registry.svc:5000/xraylab-1/xraylab-risk-assessment:tf2.13
+  registry: image-registry.openshift-image-registry.svc:5000/xraylab-1/risk-assessment:tf2.13
   from:
-    name: "xraylab-risk-assessment:tf2.13"
+    name: "risk-assessment:tf2.13"
 
 buildConfig:
   name: risk-assessment-bc
@@ -128,6 +128,17 @@ rbac:
         - '"get"'
         - '"list"'
         - '"watch"'
+    - name: create-builds
+      createRole: true
+      apiGroups:
+        - build.openshift.io
+      scope:
+        cluster: false
+        namespace: xraylab-1
+      resources:
+        - buildconfigs/instantiate
+      verbs:
+        - "*"
   roleBindings:
     - name: read-objectstore-secret
       createBinding: true
@@ -220,3 +231,16 @@ rbac:
       roleRef:
         kind: Role
         name: view-pattern-jobs
+    - name: create-builds
+      createBinding: true
+      scope:
+        cluster: false
+        namespace: xraylab-1
+      subjects:
+        kind: ServiceAccount
+        name: xraylab-1-sa
+        namespace: xraylab-1
+        apiGroup: ""
+      roleRef:
+        kind: Role
+        name: create-builds
