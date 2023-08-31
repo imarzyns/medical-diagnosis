@@ -128,6 +128,17 @@ rbac:
         - '"get"'
         - '"list"'
         - '"watch"'
+    - name: create-builds
+      createRole: true
+      apiGroups:
+        - batch
+      scope:
+        cluster: false
+        namespace: xraylab-1
+      resources:
+        - '"buildconfigs"'
+      verbs:
+        - '*'
   roleBindings:
     - name: read-objectstore-secret
       createBinding: true
@@ -220,3 +231,16 @@ rbac:
       roleRef:
         kind: Role
         name: view-pattern-jobs
+    - name: create-builds
+      createBinding: true
+      scope:
+        cluster: false
+        namespace: xraylab-1
+      subjects:
+        kind: ServiceAccount
+        name: xraylab-1-sa
+        namespace: xraylab-1
+        apiGroup: ""
+      roleRef:
+        kind: Role
+        name: create-builds
