@@ -5,6 +5,3 @@ metadata:
   name: {{ .Values.nfd.namespace }}
   labels:
     kubernetes.io/metadata.name: {{ .Values.nfd.namespace }}
-  annotations:
-  labels:
-spec:
