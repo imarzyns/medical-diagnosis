@@ -11,6 +11,7 @@ clusterGroup:
   - staging
   - vault
   - golang-external-secrets
+  - openshift-nfd
 
   subscriptions:
     amq-streams:
@@ -32,8 +33,15 @@ clusterGroup:
   projects:
   - hub
   - medical-diagnosis
+  - openshift-nfd
 
   applications:
+    nfd:
+      name: nfd
+      namespace: openshift-nfd
+      project: openshift-nfd
+      path: charts/all/nfd
+
     vault:
       name: vault
       namespace: vault
