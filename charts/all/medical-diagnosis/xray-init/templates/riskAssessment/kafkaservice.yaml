@@ -67,3 +67,13 @@ spec:
           requests:
             cpu: 400m
             memory: 100M
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: "feature.node.kubernetes.io/cpu-cpuid.AMXTILE"
+                    operator: In
+                    values: ["true"]
+                  - key: "feature.node.kubernetes.io/cpu-cpuid.AMXTILE"
+                    operator: Exists
