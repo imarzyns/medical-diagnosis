@@ -1,0 +1,3 @@
+nfd:
+  namespace: openshift-nfd
+  image: quay.io/openshift/origin-node-feature-discovery:4.12
