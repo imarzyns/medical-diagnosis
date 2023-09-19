@@ -6,5 +6,5 @@ metadata:
   labels:
     kubernetes.io/metadata.name: {{ .Values.nfd.namespace }}
   annotations:
-  labels:
+    argocd.argoproj.io/sync-wave: "-5"
 spec:
