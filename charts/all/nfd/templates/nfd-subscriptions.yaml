@@ -8,7 +8,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
 spec:
   name: nfd
-  source: redhat-operators
+  source: operators413
   sourceNamespace: openshift-marketplace
   channel: stable
   installPlanApproval: Automatic
