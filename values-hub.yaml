@@ -30,6 +30,10 @@ clusterGroup:
     serverless:
       name: serverless-operator
 
+    nfd:
+      name: nfd
+      namespace: openshift-nfd
+
   projects:
   - hub
   - medical-diagnosis
