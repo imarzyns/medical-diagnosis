@@ -33,6 +33,8 @@ clusterGroup:
     nfd:
       name: nfd
       namespace: openshift-nfd
+      channel: stable
+      source: operators413
 
   projects:
   - hub
