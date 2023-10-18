@@ -42,6 +42,12 @@ clusterGroup:
   - openshift-nfd
 
   applications:
+    nfd:
+      name: nfd
+      namespace: openshift-nfd
+      project: openshift-nfd
+      path: charts/all/nfd
+
     vault:
       name: vault
       namespace: vault
