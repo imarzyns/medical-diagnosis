@@ -15,6 +15,12 @@ spec:
     spec:
       containers:
       - image: quay.io/hybridcloudpatterns/hardware-accelerated-risk-assessment:latest
+        command:
+          - /bin/bash
+          - -c
+          - |
+            pip install Flask==3.0.2 && \
+            python -u risk-assessment.py
         ports:
         - containerPort: 5000
         env:
