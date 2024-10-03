@@ -21,7 +21,7 @@ global:
       # bucketSource: "provide s3 bucket name where images are stored"
       bucketSource: "imarzynsbucket"
       # Bucket base name used for image-generator and image-server applications.
-      bucketBaseName: "xray-source"
+      bucketBaseName: "xray-sources"
 
 main:
   clusterGroupName: hub
